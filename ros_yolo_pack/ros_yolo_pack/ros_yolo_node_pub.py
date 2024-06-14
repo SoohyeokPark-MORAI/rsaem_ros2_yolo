@@ -74,7 +74,8 @@ def image_detection2(frame, network, class_names, class_colors, thresh):
     for label, confidence, bbox in detections:
         bbox_adjusted = convert2original(frame, bbox, darknet_width, darknet_height)
         detections_adjusted.append((str(label), confidence, bbox_adjusted))
-        detMsg.label = 'none'
+        #detMsg.label = 'none'
+        detMsg.label = str(label)
         if(label == 'person'):
             bbox1 = bbox_adjusted
             #msg = DetInfo()
