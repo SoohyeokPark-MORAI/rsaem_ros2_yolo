@@ -79,8 +79,8 @@ def image_detection2(frame, network, class_names, class_colors, thresh):
             bbox1 = bbox_adjusted
             #msg = DetInfo()
             detMsg.label = label
-            detMsg.bWidth = bbox1[2]
-            detMsg.bHeight = bbox1[3]          
+            detMsg.b_width = bbox1[2]
+            detMsg.b_height = bbox1[3]          
             detMsg.centerX = int(bbox1[0] + bbox1[2]/2.0)
             detMsg.centerY = int(bbox1[1] + bbox1[3]/2.0)
             
