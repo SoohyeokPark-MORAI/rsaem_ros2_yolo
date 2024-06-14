@@ -70,16 +70,16 @@ def image_detection2(frame, network, class_names, class_colors, thresh):
     detections = detect_image(network, class_names, darknet_image, thresh=thresh)
 
     detections_adjusted = []
-    detMsg = DetInfo()
     for label, confidence, bbox in detections:
+        detMsg = DetInfo()
         bbox_adjusted = convert2original(frame, bbox, darknet_width, darknet_height)
         detections_adjusted.append((str(label), confidence, bbox_adjusted))
-        #detMsg.label = 'none'
-        detMsg.label = str(label)
-        if(label == 'person'):
+        detMsg.label = 'none'
+        label_name = str(label)
+        if(str(label) == 'person'):
             bbox1 = bbox_adjusted
             #msg = DetInfo()
-            detMsg.label = label
+            detMsg.label = label_name
             detMsg.b_width = bbox1[2]
             detMsg.b_height = bbox1[3]          
             detMsg.center_x = int(bbox1[0] + bbox1[2]/2.0)
