@@ -81,8 +81,8 @@ def image_detection2(frame, network, class_names, class_colors, thresh):
             detMsg.label = label
             detMsg.b_width = bbox1[2]
             detMsg.b_height = bbox1[3]          
-            detMsg.centerX = int(bbox1[0] + bbox1[2]/2.0)
-            detMsg.centerY = int(bbox1[1] + bbox1[3]/2.0)
+            detMsg.center_x = int(bbox1[0] + bbox1[2]/2.0)
+            detMsg.center_y = int(bbox1[1] + bbox1[3]/2.0)
             
     #darknet.free_image(darknet_image)
     #image = darknet.draw_boxes(detections_adjusted, frame, class_colors)
@@ -148,7 +148,7 @@ class DetTopicPublisher(Node):
         output, detMsg = image_detection2(
                 cv_image, self.network, self.class_names, self.class_colors, self.thresh)    
 
-        self.det_publisher.publish(self.detMsg)
+        self.det_publisher.publish(detMsg)
         #cv2.imshow('frame',output)
         #cv2.waitKey(1)
         
